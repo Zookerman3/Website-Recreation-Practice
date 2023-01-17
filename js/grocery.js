@@ -13,7 +13,10 @@ window.addEventListener("load", function () {
     
     let selectionArray = [firstInput, secondInput, thirdInput];
 
-    function makeUL(array) {
+    selectionArray = selectionArray.sort()
+    
+    
+    function createUlElementAndAddLiElements(array) {
       // Create the list element:
       var firstUlElement = document.createElement('ul');
 
@@ -22,7 +25,7 @@ window.addEventListener("load", function () {
         var firstliElement = document.createElement('li');
 
         // Set its contents:
-        firstliElement.appendChild(document.createTextNode(array[i]));
+        firstliElement.appendChild(document.createTextNode(array[i].toUpperCase()));
 
         // Add it to the list:
         firstUlElement.appendChild(firstliElement);
@@ -31,10 +34,14 @@ window.addEventListener("load", function () {
       // Finally, return the constructed list:
       return firstUlElement;
     }
+    
+    
+    
     // Add the contents of options[0] to #foo:
-    document.getElementById('foo').appendChild(makeUL(selectionArray));
+    document.getElementById('foo').appendChild(createUlElementAndAddLiElements(selectionArray));
+    form.setAttribute("class","defaultHidden");
     div.removeAttribute("class")
-
+    
   });
 
 });
